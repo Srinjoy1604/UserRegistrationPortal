@@ -1,3 +1,4 @@
+
 # User Registration Portal
 
 A full-stack User Registration Portal with features to register, view, update, and delete users. Built using the MERN stack (MongoDB, Express, React, Node.js).
@@ -32,7 +33,7 @@ For both frontend and backend, run:
 ```bash
 cd frontend
 npm install
-cd backend
+cd ../backend
 npm install
 ```
 
@@ -68,6 +69,19 @@ npm run dev
 cd backend
 npm run dev
 ```
+
+---
+
+## 📋 API Endpoints Summary
+
+| Method | Endpoint             | Description                        |
+|--------|----------------------|------------------------------------|
+| POST   | `/user/register`     | Register a new user                |
+| GET    | `/user/usersData`    | Retrieve all registered users      |
+| PUT    | `/user/:id`          | Update a user's information        |
+| DELETE | `/user/:id`          | Delete a user                      |
+| GET    | `/user/genders`      | Get available gender options       |
+| GET    | `/health`            | Check if backend server is running |
 
 ---
 
@@ -195,8 +209,8 @@ Base URL: `/user`
 
 ---
 
-## 📝 Assumptions
+## 🧠 Assumptions
 
-- As no email field was specified in the requirements, the user's `name` is used to check for duplicate registrations.
-- Since no login page or authentication flow was mentioned, the update route requires the user to re-enter their **password** to confirm their identity before making changes.
+- Since no **email** was specified, the **username (name)** is used to detect duplicate users during registration.
+- No **login system** was mentioned, so for updating user details, the **correct password must be provided** for authentication.
 
