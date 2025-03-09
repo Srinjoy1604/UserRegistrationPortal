@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./models/model");
 const UserRouter = require("./routes/UserRouter");
+const app = express();
 app.use(cors({
     origin: ["https://doc-vault-beta.vercel.app", "http://localhost:5173"], // Allow both origins
     credentials:true,            //access-control-allow-credentials:true
@@ -11,7 +12,7 @@ app.use(cors({
 dotenv.config();
 connectDB();
 
-const app = express();
+
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
