@@ -5,7 +5,7 @@ const connectDB = require("./models/model");
 const UserRouter = require("./routes/UserRouter");
 const app = express();
 app.use(cors({
-    origin: ["https://doc-vault-beta.vercel.app", "http://localhost:5173"], // Allow both origins
+    origin: ["user-registration-portal-frontend.vercel.app", "http://localhost:5173"], // Allow both origins
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }));
