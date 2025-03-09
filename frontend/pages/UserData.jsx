@@ -186,7 +186,7 @@ function UserData() {
     return (
         <div  className={`${styles.DataMain} h-[100%]`}
         style={{
-            backgroundImage: `url("/images/SignUp/pexels-codioful-7134981.jpg")`,
+            backgroundImage: `url("./pexels-codioful-7134981.jpg")`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}>

@@ -4,7 +4,7 @@
     min-height: 100vh;
     display: grid;
     place-items: center;
-    background-image: url(".././images/SignUp/pexels-codioful-7134981.jpg");
+    background-image: url("/pexels-codioful-7134981.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
