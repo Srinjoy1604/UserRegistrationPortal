@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.DataMain {
+    font-family: "Poppins", system-ui;
+}
+
+.NameTag {
+    background: rgba(0, 0, 0, 0.43);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-evenly;
+    align-content:space-evenly;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.ButtonMain
+{
+    margin: 1%;
+    color: black;
+    font-family: "Poppins", system-ui;
+    
+}
+.ButtonMain:hover
+{
+
+    scale: 0.9;
+}
+.ShowBtn
+{
+    background-color: rgb(44, 15, 45);
+    border: 2px solid rgb(111, 40, 114);
+    outline: 2px solid orange;
+    transition: all 0.4s ease-in-out;
+    color: white;
+}
+.ShowBtn:hover
+{
+    border: 2px solid rgb(234, 183, 146);
+    outline: 2px solid rgb(234, 183, 146);
+    background-color: rgb(190, 133, 192);
+}
+.DeleteBtn
+{
+    background-color: rgb(183, 27, 27);
+    border: 2px solid rgb(183, 27, 27);
+    outline: 2px solid rgb(84, 4, 4);
+    transition: all 0.4s ease-in-out;
+    color: white;
+}
+.DeleteBtn:hover
+{
+    border: 2px solid rgb(229, 96, 96);
+    outline: 2px solid rgb(229, 96, 96);
+    background-color: rgb(229, 96, 96);
+}
+.UpdateDataBtn
+{
+    background-color: rgb(24, 184, 176);
+    border: 2px solid rgb(24, 184, 176);
+    outline: 2px solid rgb(35, 115, 111);
+    transition: all 0.4s ease-in-out;
+    color: black;
+}
+.UpdateDataBtn:hover
+{
+    border: 2px solid rgb(136, 236, 231);
+    outline: 2px solid rgb(136, 236, 231);
+    background-color: rgb(136, 236, 231);
+}

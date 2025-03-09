@@ -18,6 +18,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from "dayjs";
 
+import styles from "./UserData.module.css";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
@@ -135,7 +136,7 @@ function UserData() {
             const response = await axios.get(`${BASE_Url}/user/usersData`);
             if (response.data.success) {
                 setUserData(response.data.users);
-                console.log("Fetched Users:", response.data.users);
+                
             } else {
                 setUserData([]);
             }
@@ -183,22 +184,31 @@ function UserData() {
     }, []);
 
     return (
-        <div>
-            <h1>Data</h1>
+        <div  className={`${styles.DataMain} h-[100%]`}
+        style={{
+            backgroundImage: `url("/images/SignUp/pexels-codioful-7134981.jpg")`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}>
+            <h1 className="w-[100%] bg-amber-500  p-[1%] text-black text-[2rem]">Registered Users</h1>
             <div>
                 {userData.length > 0 ? (
-                    <div>
+                    <div >
                         {userData.map((ele, ind) => (
-                            <div key={ind} className="border-1 m-[2%]">
-                                {ele.name}
-                                <button onClick={() => handleClickOpen(ele)}>Show data</button>
-                                <button onClick={() => handleDelete(ele)}>Delete</button>
-                                <button onClick={() => handleEditBox(ele)}>Update User Data</button>
+                            <div key={ind} className={`border-1 border-slate-400 m-[1%] ${styles.NameTag} p-[2%]`}>
+                                <div className="grid w-[100%]">
+                                    <p className="mt-[1%] text-[1.2rem] w-[100%] grid place-items-start">{ele.name}</p>
+                                    <div className="flex flex-wrap justify-evenly align-middle">
+                                        <button onClick={() => handleClickOpen(ele)} className={`${styles.ButtonMain} ${styles.ShowBtn}`}>Show data</button>
+                                        <button onClick={() => handleDelete(ele)} className={`${styles.ButtonMain} ${styles.DeleteBtn}`}>Delete</button>
+                                        <button onClick={() => handleEditBox(ele)} className={`${styles.ButtonMain} ${styles.UpdateDataBtn}`}>Update User Data</button>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <h1>No users registered yet</h1>
+                    <h1 className="text-orange-400 text-[2rem] break-words bg-black text-center">No user registration yet</h1>
                 )}
             </div>
 
@@ -287,7 +297,7 @@ function UserData() {
 
 
                         <label>About</label>
-                        <textarea name="about" value={formData.about} onChange={handleFormChange} className="border p-2 rounded h-28 resize-none" />
+                        <textarea name="about" value={formData.about} onChange={handleFormChange} className="border p-2 rounded h-28 resize-none" maxLength={5000} />
 
                         <label>Enter Password to Confirm Update</label>
                         <input type="password" name="password" value={formData.password} onChange={handleFormChange} className="border p-2 rounded" />
@@ -299,7 +309,7 @@ function UserData() {
                 </DialogActions>
             </Dialog>
 
-            <ToastContainer />
+       
         </div>
     );
 }

@@ -2,21 +2,19 @@
 .MainBlockBackground {
     width: 100vw;
     min-height: 100vh;
-    background-color: lightblue;
     display: grid;
     place-items: center;
-    background-image: url(".././images/SignUp/blue-lint-abstract-8k-2560x1600.jpg");
+    background-image: url(".././images/SignUp/pexels-codioful-7134981.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .MainBlock {
-    width: 30%;
+    width: 60%;
     padding: 2%;
     min-height: 370px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     flex-direction: column;
     background: rgba(255, 255, 255, 0.29);
     border-radius: 16px;
@@ -27,19 +25,21 @@
 }
 
 .MainBlock h1 {
-    margin: 0;
     margin: 2%;
+    margin-bottom: 0;
     padding: 2%;
     font-family: "Poppins", system-ui;
 }
 
 .FormMain {
-    margin: 2%;
+    margin: 1%;
     padding: 2%;
+    color: black;
 }
 
 .InputBar {
     padding: 2%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -50,30 +50,28 @@
 
 .InputBar label
 {
-    color: white;
+    color: black;
     font-weight: 600;
 }
 .InputBar input {
     width: 100%;
     height: 30px;
-    /* border-radius: 12px; */
-    /* border-radius: 12px; */
     border: none;
     outline: none;
     border-bottom: 2px solid black;
-    background-color: rgba(255, 255, 255, 0.313);
+    background-color: none;
     transition: 0.5s ease-in-out all;
 }
 .InputBar input::placeholder
 {
     font-family: "Poppins", system-ui;
     font-size: 1.1rem;
-    font-style: italic;
+  
     color: rgb(40, 40, 40);
 }
 .InputBar input:focus
 {
-    border-bottom: 2px red solid;
+    border-bottom: 2px rgb(97, 212, 65) solid;
 }
 .SubmitButton {
     display: flex;
@@ -116,4 +114,31 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 1.2rem;
+}
+.ButtonMain
+{
+    
+    color: black;
+    font-family: "Poppins", system-ui;
+    
+}
+.ButtonMain:hover
+{
+
+    
+}
+.GotoBtn
+{
+    background-color: orange;
+    border: 2px solid orange;
+    outline: 2px solid orange;
+    transition: all 0.4s ease-in-out;
+
+}
+.GotoBtn:hover
+{
+    border: 2px solid rgb(234, 183, 146);
+    outline: 2px solid rgb(234, 183, 146);
+    background-color: rgb(229, 183, 98);
+    scale: 0.9;
 }

@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../src/utils";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Clogo from "../images/FinacPlus.webp";
+const BASE_Url = import.meta.env.VITE_BASE_URL;
 
-const BASE_Url=import.meta.env.VITE_BASE_URL;
 export default function RegisterUser() {
   const [signInfo, setSignUpInfo] = useState({
     name: "",
@@ -17,6 +19,7 @@ export default function RegisterUser() {
   });
 
   const [genders, setGenders] = useState([]);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,7 +54,6 @@ export default function RegisterUser() {
       return handleError("Password must be at least 10 characters and contain letters and digits.");
     }
 
-    // Age validation based on date of birth
     const birthDate = new Date(dateOfBirth);
     const today = new Date();
     let calculatedAge = today.getFullYear() - birthDate.getFullYear();
@@ -65,7 +67,7 @@ export default function RegisterUser() {
     }
 
     try {
-        const response = await axios.post(`${BASE_Url}/user/register`, signInfo, {
+      const response = await axios.post(`${BASE_Url}/user/register`, signInfo, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -90,7 +92,6 @@ export default function RegisterUser() {
     }
   };
 
-  // Get today's date in YYYY-MM-DD format for max attribute
   const getTodayDate = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -101,9 +102,10 @@ export default function RegisterUser() {
 
   return (
     <div className={`${styles.MainBlockBackground} p-[2%]`}>
-    <div><button onClick={() => navigate("/data")}>Show and update user list</button></div>
+      <div className="grid place-items-center w-[100%]"><img src={Clogo} className="w-[10%]"></img></div>
+      <div className={`m-[2%] `}><button onClick={() => navigate("/data")} className={`${styles.ButtonMain} ${styles.GotoBtn} `}>Show and update user registrations</button></div>
       <div className={styles.MainBlock}>
-        <h1>Register User</h1>
+        <h1 className="text-[3rem] text-orange-500 break-words">Register User</h1>
         <form className={styles.FormMain} onSubmit={handleSubmit}>
           <div className={styles.InputBar}>
             <label htmlFor="name">User Name</label>
@@ -114,6 +116,7 @@ export default function RegisterUser() {
               autoFocus
               placeholder="Enter your username"
               value={signInfo.name}
+              
             />
           </div>
           <div className={styles.InputBar}>
@@ -133,23 +136,40 @@ export default function RegisterUser() {
               type="date"
               name="dateOfBirth"
               value={signInfo.dateOfBirth}
-              max={getTodayDate()} // Prevents selecting future dates
+              max={getTodayDate()}
             />
           </div>
           <div className={styles.InputBar}>
             <label htmlFor="password">Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              autoComplete="on"
-              placeholder="Enter your password"
-              value={signInfo.password}
-            />
+            <div style={{ position: "relative" }} className="w-[100%]">
+              <input
+                onChange={handleChange}
+                type={showPassword ? "text" : "password"}
+                name="password"
+                autoComplete="on"
+                placeholder="Enter your password"
+                value={signInfo.password}
+                style={{ paddingRight: "35px" }}
+                className="w-[100%]"
+              />
+              <span
+                onClick={() => setShowPassword((prev) => !prev)}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#555"
+                }}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
           </div>
           <div className={styles.InputBar}>
             <label htmlFor="gender">Gender</label>
-            <select name="gender" onChange={handleChange} value={signInfo.gender}>
+            <select name="gender" onChange={handleChange} value={signInfo.gender} className="border-1 border-stone-500 p-[1%] rounded-[12px] ">
               <option value="">Select Gender</option>
               {genders.map((g, index) => (
                 <option key={index} value={g}>{g}</option>
@@ -163,10 +183,9 @@ export default function RegisterUser() {
               name="about"
               placeholder="Tell us about yourself..."
               value={signInfo.about}
-              maxLength={5000}
+              maxLength={5000}   className="w-[100%] h-[80%] min-h-[200px] border-2 border-black p-[1%] text-black"
             />
-            {/* Character Count Below Textarea */}
-            <p style={{ fontSize: "12px", color: "#555", marginTop: "5px" }}>
+            <p style={{ fontSize: "12px", color: "black", marginTop: "5px" }} >
               {signInfo.about.length} / 5000 characters
             </p>
           </div>
@@ -176,7 +195,7 @@ export default function RegisterUser() {
           </div>
         </form>
 
-        <ToastContainer />
+     
       </div>
     </div>
   );
