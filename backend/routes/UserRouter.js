@@ -12,5 +12,3 @@ module.exports = router;
 
 
 
-
-// router.post('/login',loginValidation,login);

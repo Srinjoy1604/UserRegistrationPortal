@@ -9,7 +9,7 @@ export default function SuccessPage() {
 
 
   return (
-    <div className={`h-[100%]  flex justify-center align-items-center `}
+    <div className={`h-[100%]  flex justify-center items-center `}
       style={{
         backgroundImage: `url("./pexels-codioful-7134981.jpg")`,
         backgroundSize: "cover",

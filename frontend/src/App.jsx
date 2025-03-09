@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../src/utils";
 function App() {
   return (
-    <div className='h-[100%]'>
+    <div className='h-[100%] min-h-[100vh]'>
       
       <Routes>
       

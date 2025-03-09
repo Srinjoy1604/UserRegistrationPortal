@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SignUp.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../src/utils";
@@ -21,7 +21,6 @@ export default function RegisterUser() {
   const [genders, setGenders] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchGenders = async () => {
       try {
@@ -32,7 +31,7 @@ export default function RegisterUser() {
       }
     };
     fetchGenders();
-  }, []);
+}, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,7 +86,7 @@ export default function RegisterUser() {
         handleError(message);
       }
     } catch (error) {
-      const details = error?.response?.data?.error?.details[0]?.message || "Server error.";
+      const details = error?.response?.data?.message || "Server error or user already registered";
       handleError(details);
     }
   };
