@@ -14,7 +14,7 @@ export default function RegisterUser() {
     age: "",
     dateOfBirth: "",
     gender: "",
-    about: " ",
+    about: "",
     password: "",
   });
 

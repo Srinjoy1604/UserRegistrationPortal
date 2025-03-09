@@ -6,7 +6,7 @@ const registerValidation = (req, res, next) => {
         age: Joi.number().min(0).max(120).required(),
         dateOfBirth: Joi.date().required(),
         gender: Joi.string().valid("Male", "Female", "Other").required(),
-        about: Joi.string().max(5000).optional(),
+        about: Joi.string().max(5000).optional().allow(''),
         password: Joi.string()
             .min(10)
             .max(100)
