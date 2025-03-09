@@ -32,7 +32,7 @@ For both frontend and backend, run:
 ```bash
 cd frontend
 npm install
-cd ../backend
+cd backend
 npm install
 ```
 
