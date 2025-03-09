@@ -35,6 +35,7 @@ function UserData() {
     const [open, setOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [editOpen, setEditOpen] = useState(false);
+    const [Loading,setLoadingText]=useState("Loading...");
     const [formData, setFormData] = useState({
         name: "",
         age: "",
@@ -44,7 +45,20 @@ function UserData() {
         password: ""
     });
     const [genders, setGenders] = useState([]);
-
+    const fetchUsersData = async () => {
+        try {
+            const response = await axios.get(`${BASE_Url}/user/usersData`);
+            if (response.data.success) {
+                setUserData(response.data.users);
+                
+            } else {
+                setUserData([]);
+                setLoadingText("No user registration yet");
+            }
+        } catch (error) {
+            handleError("Failed to fetch User Data ");
+        }
+    };
     useEffect(() => {
         const fetchGenders = async () => {
             try {
@@ -55,6 +69,7 @@ function UserData() {
             }
         };
         fetchGenders();
+        fetchUsersData();
     }, []);
 
     const handleClickOpen = (user) => {
@@ -131,19 +146,7 @@ function UserData() {
         }
     };
 
-    const fetchUsersData = async () => {
-        try {
-            const response = await axios.get(`${BASE_Url}/user/usersData`);
-            if (response.data.success) {
-                setUserData(response.data.users);
-                
-            } else {
-                setUserData([]);
-            }
-        } catch (error) {
-            handleError("Failed to fetch User Data ");
-        }
-    };
+
 
     const handleDelete = async (user) => {
         try {
@@ -179,9 +182,9 @@ function UserData() {
         }
     };
 
-    useEffect(() => {
-        fetchUsersData();
-    }, []);
+    // useEffect(() => {
+    //     fetchUsersData();
+    // }, []);
 
     return (
         <div  className={`${styles.DataMain} h-[100%]`}
@@ -208,7 +211,7 @@ function UserData() {
                         ))}
                     </div>
                 ) : (
-                    <h1 className="text-orange-400 text-[2rem] break-words bg-black text-center">No user registration yet</h1>
+                    <h1 className="text-orange-400 text-[2rem] break-words bg-black text-center">{Loading}</h1>
                 )}
             </div>
 
